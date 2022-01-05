@@ -2,6 +2,7 @@ package com.neppplus.phoneorderapp_20220105
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.neppplus.phoneorderapp_20220105.adapters.StoreAdapter
 import com.neppplus.phoneorderapp_20220105.models.StoreData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -9,6 +10,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     val mStoreList = ArrayList<StoreData>()
+
+    lateinit var mStoreAdapter : StoreAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         mStoreList.add(StoreData("도미노 피자", "1577-3082", "https://pbs.twimg.com/profile_images/1098371010548555776/trCrCTDN_400x400.png"))
         mStoreList.add(StoreData("미스터 피자", "1577-0077", "https://post-phinf.pstatic.net/MjAxODEyMDVfMzYg/MDAxNTQzOTYxOTA4NjM3.8gsStnhxz7eEc9zpt5nmSRZmI-Pzpl4NJvHYU-Dlgmcg.7Vpgk0lopJ5GoTav3CUDqmXi2-_67S5AXD0AGbbR6J4g.JPEG/IMG_1641.jpg?type=w1200"))
 
-
+        mStoreAdapter = StoreAdapter(this, mStoreList)
+        storeRecyclerView.adapter = mStoreAdapter
+        storeRecyclerView.layoutManager = LinearLayoutManager(this)
 
     }
 }
