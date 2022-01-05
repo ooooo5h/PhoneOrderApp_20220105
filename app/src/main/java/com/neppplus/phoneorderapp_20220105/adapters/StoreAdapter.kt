@@ -34,15 +34,13 @@ class StoreAdapter(
             row.setOnClickListener {
 
                 val myIntent = Intent(mContext, ViewStoreDetailActivity::class.java)
+                myIntent.putExtra("store", data)
                 mContext.startActivity(myIntent)
 
             }
 
-
         }
 
-
-    
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
